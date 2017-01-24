@@ -37,13 +37,13 @@ The Infortrend volume driver supports the following volume operations:
 System requirements
 ~~~~~~~~~~~~~~~~~~~
 
-To use the Infortrend volume driver, the following are required:
+To use the Infortrend volume driver, the followings are required:
 
 Set up Infortrend storage
 -------------------------
 * Create logical volumes in advance.
 
-* Array setting `Peripheral device type` should be `No Device Present (Type=0x7f)`.
+* Array setting ``Peripheral device type`` should be ``No Device Present (Type=0x7f)``.
 
 Set up cinder-volume node
 -------------------------
