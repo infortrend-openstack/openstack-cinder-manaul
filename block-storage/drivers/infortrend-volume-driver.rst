@@ -78,8 +78,8 @@ iSCSI configuration example
    infortrend_slots_b_channels_id = 0,1,2,3
 
 
-Fibre channel configuration example
------------------------------------
+Fibre channel configuration
+---------------------------
 
 .. code-block:: ini
 
