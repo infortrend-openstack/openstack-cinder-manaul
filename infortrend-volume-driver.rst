@@ -152,7 +152,7 @@ Extra spec usage
 
 * ``infortrend:provisioning`` - Defaults to ``full`` provisioning, the valid values are thin, full.
 
-* ``infortrend:tiering`` - Defaults to use ``all`` tiering, the valid values are 0, 1, 2, 3.
+* ``infortrend:tiering`` - Defaults to use ``all`` tiering, the valid values are subsets of 0, 1, 2, 3.
 
   If multi pools are configured in cinder.conf, it can be specified for each pool, separated by semicolon.
 
