@@ -43,20 +43,21 @@ Set up Infortrend storage
 -------------------------
 * Create logical volumes in advance.
 
-* Array setting ``Peripheral device type`` should be ``No Device Present (Type=0x7f)``.
+* Host side setting ``Peripheral device type`` should be ``No Device Present (Type=0x7f)``.
 
 Set up cinder-volume node
 -------------------------
 * Install Oracle Java 7 or later.
 
 * Download the Infortrend storage CLI from our
-  `release page <https://github.com/infortrend-openstack/infortrend-cinder-driver/releases>`__.
+  `release page <https://github.com/infortrend-openstack/infortrend-cinder-driver/releases>`__,
+  and put it to the default path ``/opt/bin/Infortrend/``.
 
 
 Driver configuration
 ~~~~~~~~~~~~~~~~~~~~
 
-On cinder-volume nodes, set the ``/etc/cinder/cinder.conf`` configuration file, and follow below
+On cinder-volume nodes, set the following in your ``/etc/cinder/cinder.conf``, and follow below
 examples, replacing the variables to fit your requirements:
 
 
@@ -98,7 +99,29 @@ Fibre channel configuration example
 Configuration parameters
 ------------------------
 
+.. list-table:: Description of quota configuration options
+   :header-rows: 1
+   :class: config-ref-table
 
+   * - Configuration option = Default value
+     - Description
+   * - **[DEFAULT]**
+     -
+   * - ``infortrend_cli_max_retries`` = ``5``
+     - (Integer) The retry times of if a command fails.
+   * - ``infortrend_cli_timeout`` = ``30``
+     - (Integer) The timeout for migrating jobs in minute.
+   * - ``infortrend_cli_cache`` = ``False``
+     - (Boolean) The Infortrend CLI cache. Make sure the array is only managed by Openstack and it's only used by one cinder-volume node.
+     Otherwise, never enable it! The data might be asynchronous if there're any other operations.
+   * - ``infortrend_iqn_prefix`` = ``iqn.2002-10.com.infortrend``
+     - (String) Infortrend default iqn prefix for iSCSI.
+   * - ``infortrend_cli_path`` = ``/opt/bin/Infortrend/raidcmd_ESDS10.jar``
+     - (String) The Infortrend CLI absolute path.
+   * - ``java_path`` = ``/usr/bin/java``
+     - (String) The Java absolute path.
+   * - ``san_password`` = ``None``
+     - (String) The Infortrend array password.
 
 Extra spec setting
 ~~~~~~~~~~~~~~~~~~
