@@ -99,7 +99,7 @@ Fibre channel configuration example
 Configuration parameters
 ------------------------
 
-.. list-table:: Description of quota configuration options
+.. list-table:: Description of Infortrend volume driver configuration options
    :header-rows: 1
    :class: config-ref-table
 
@@ -123,9 +123,31 @@ Configuration parameters
    * - ``san_password`` = ``None``
      - (String) The Infortrend array password.
 
+Multipath Configuration
+-----------------------
+
+Enable multipath for image transfer in ``/etc/cinder/cinder.conf``.
+
+   .. code-block:: ini
+
+     use_multipath_for_image_xfer = True
+
+   Restart the ``cinder-volume`` service to load the change.
+
+Enable multipath for volume attache/detach in ``/etc/nova/nova.conf``.
+
+   .. code-block:: ini
+
+     [libvirt]
+     ...
+     volume_use_multipath = True
+     ...
+
+   Restart the ``nova-compute`` service.
+
+
 Extra spec setting
 ~~~~~~~~~~~~~~~~~~
-
 
 For more detailed, see `Infortrend documents <http://www.infortrend.com/ImageLoader/LoadDoc/715/True/True/Infortrend%20document>`_.
 
