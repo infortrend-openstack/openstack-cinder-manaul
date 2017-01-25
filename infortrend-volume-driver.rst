@@ -5,7 +5,6 @@ Infortrend volume driver
 The `Infortrend <http://www.infortrend.com/global>`__ volume driver is a Block Storage driver
 providing iSCSI and Fibre Channel support for Infortrend storages.
 
-
 Supported operations
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -33,7 +32,6 @@ The Infortrend volume driver supports the following volume operations:
 
 * Live migrate an instance with volumes hosted on an Infortrend backend.
 
-
 System requirements
 ~~~~~~~~~~~~~~~~~~~
 
@@ -53,13 +51,11 @@ Set up cinder-volume node
   `release page <https://github.com/infortrend-openstack/infortrend-cinder-driver/releases>`__,
   and put it to the default path ``/opt/bin/Infortrend/``.
 
-
 Driver configuration
 ~~~~~~~~~~~~~~~~~~~~
 
 On cinder-volume nodes, set the following in your ``/etc/cinder/cinder.conf``, and follow below
 examples, replacing the variables to fit your requirements:
-
 
 Driver options
 --------------
@@ -96,7 +92,6 @@ Driver options
    * - ``san_password`` = ``None``
      - (String) The Infortrend array password.
 
-
 iSCSI configuration example
 ---------------------------
 
@@ -114,8 +109,7 @@ iSCSI configuration example
    infortrend_slots_a_channels_id = 0,1,2,3
    infortrend_slots_b_channels_id = 0,1,2,3
 
-
-Fibre channel configuration example
+Fibre Channel configuration example
 -----------------------------------
 
 .. code-block:: ini
@@ -130,7 +124,6 @@ Fibre channel configuration example
    infortrend_pools_name = POOL-1,POOL-2,POOL-3
    san_ip = MANAGEMENT_PORT_IP
    infortrend_slots_a_channels_id = 4,5
-
 
 Multipath Configuration
 -----------------------
@@ -154,14 +147,19 @@ Enable multipath for volume attach/detach in ``/etc/nova/nova.conf``.
 
    Restart the ``nova-compute`` service.
 
-
 Extra spec usage
-~~~~~~~~~~~~~~~~
+----------------
 
-* ``infortrend:provisioning``
+* ``infortrend:provisioning`` - Defaults to ``full`` provisioning, the valid values are thin, full.
 
-* ``infortrend:tiering``
+* ``infortrend:tiering`` - Defaults to use ``all`` tiering, the valid values are 0, 1, 2, 3.
 
+  If multi pools are configured in cinder.conf, it can be specified for each pool, separated by semicolon.
 
-For more detailed, see `Infortrend documents <http://www.infortrend.com/ImageLoader/LoadDoc/715/True/True/Infortrend%20document>`_.
+  For example:
 
+  ``infortrend:provisioning``: ``POOL-1:thin; POOL-2:full``
+
+  ``infortrend:tiering``: ``POOL-1:all; POOL-2:0; POOL-3:0,1,3``
+
+For more details, see `Infortrend documents <http://www.infortrend.com/ImageLoader/LoadDoc/715/True/True/Infortrend%20document>`_.
