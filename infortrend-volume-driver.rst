@@ -41,7 +41,8 @@ Set up Infortrend storage
 -------------------------
 * Create logical volumes in advance.
 
-* Host side setting ``Peripheral device type`` should be ``No Device Present (Type=0x7f)``.
+* Host side setting ``Peripheral device type`` should be
+  ``No Device Present (Type=0x7f)``.
 
 Set up cinder-volume node
 -------------------------
@@ -54,8 +55,8 @@ Set up cinder-volume node
 Driver configuration
 ~~~~~~~~~~~~~~~~~~~~
 
-On cinder-volume nodes, set the following in your ``/etc/cinder/cinder.conf``, and follow below
-examples, replacing the variables to fit your requirements:
+On cinder-volume nodes, set the following in your ``/etc/cinder/cinder.conf``,
+and follow below examples, replacing the variables to fit your requirements:
 
 Driver options
 --------------
@@ -82,7 +83,7 @@ Driver options
      - (Integer) The timeout for migrating jobs in minute.
    * - ``infortrend_cli_cache`` = ``False``
      - (Boolean) The Infortrend CLI cache. Make sure the array is only managed by Openstack and it's only used by one cinder-volume node.
-     Otherwise, never enable it! The data might be asynchronous if there're any other operations.
+       Otherwise, never enable it! The data might be asynchronous if there're any other operations.
    * - ``infortrend_iqn_prefix`` = ``iqn.2002-10.com.infortrend``
      - (String) Infortrend default iqn prefix for iSCSI.
    * - ``infortrend_cli_path`` = ``/opt/bin/Infortrend/raidcmd_ESDS10.jar``
