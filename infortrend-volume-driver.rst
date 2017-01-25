@@ -162,4 +162,4 @@ Extra spec usage
 
   ``infortrend:tiering``: ``POOL-1:all; POOL-2:0; POOL-3:0,1,3``
 
-For more details, see `Infortrend documents <http://www.infortrend.com/ImageLoader/LoadDoc/715/True/True/Infortrend%20document>`_.
+For more details, see `Infortrend documents <http://www.infortrend.com/ImageLoader/LoadDoc/715>`_.
