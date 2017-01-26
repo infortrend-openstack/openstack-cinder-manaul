@@ -80,7 +80,7 @@ Driver options
    * - ``infortrend_slots_b_channels_id`` = ``None``
      - (String) The channels on slot B used by Cinder.
    * - ``infortrend_cli_max_retries`` = ``5``
-     - (Integer) The retry times of if a command fails.
+     - (Integer) The retry times if a command fails.
    * - ``infortrend_cli_timeout`` = ``30``
      - (Integer) The timeout for migration jobs in minute.
    * - ``infortrend_cli_cache`` = ``False``
