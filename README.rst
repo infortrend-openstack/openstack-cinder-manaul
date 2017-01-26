@@ -35,10 +35,11 @@ The Infortrend volume driver supports the following volume operations:
 System requirements
 ~~~~~~~~~~~~~~~~~~~
 
-To use the Infortrend volume driver, the followings are required:
+To use the Infortrend volume driver, the following settings are required:
 
 Set up Infortrend storage
 -------------------------
+
 * Create logical volumes in advance.
 
 * Host side setting ``Peripheral device type`` should be
@@ -46,17 +47,18 @@ Set up Infortrend storage
 
 Set up cinder-volume node
 -------------------------
+
 * Install Oracle Java 7 or later.
 
-* Download the Infortrend storage CLI from our
+* Download the Infortrend storage CLI from the
   `release page <https://github.com/infortrend-openstack/infortrend-cinder-driver/releases>`__,
-  and put it to the default path ``/opt/bin/Infortrend/``.
+  and assign it to the default path ``/opt/bin/Infortrend/``.
 
 Driver configuration
 ~~~~~~~~~~~~~~~~~~~~
 
-On cinder-volume nodes, set the following in your ``/etc/cinder/cinder.conf``,
-and follow below examples, replacing the variables to fit your requirements:
+On ``cinder-volume`` nodes, set the following in your ``/etc/cinder/cinder.conf``,
+and use the following options to configure it:
 
 Driver options
 --------------
@@ -80,7 +82,7 @@ Driver options
    * - ``infortrend_cli_max_retries`` = ``5``
      - (Integer) The retry times of if a command fails.
    * - ``infortrend_cli_timeout`` = ``30``
-     - (Integer) The timeout for migrating jobs in minute.
+     - (Integer) The timeout for migration jobs in minute.
    * - ``infortrend_cli_cache`` = ``False``
      - (Boolean) The Infortrend CLI cache. Make sure the array is only managed by Openstack and it's only used by one cinder-volume node.
        Otherwise, never enable it! The data might be asynchronous if there're any other operations.
@@ -126,10 +128,10 @@ Fibre Channel configuration example
    san_ip = MANAGEMENT_PORT_IP
    infortrend_slots_a_channels_id = 4,5
 
-Multipath Configuration
+Multipath configuration
 -----------------------
 
-Enable multipath for image transfer in ``/etc/cinder/cinder.conf``.
+* Enable multipath for image transfer in ``/etc/cinder/cinder.conf``.
 
    .. code-block:: ini
 
@@ -137,7 +139,7 @@ Enable multipath for image transfer in ``/etc/cinder/cinder.conf``.
 
    Restart the ``cinder-volume`` service.
 
-Enable multipath for volume attach/detach in ``/etc/nova/nova.conf``.
+* Enable multipath for volume attach and detach in ``/etc/nova/nova.conf``.
 
    .. code-block:: ini
 
@@ -151,11 +153,11 @@ Enable multipath for volume attach/detach in ``/etc/nova/nova.conf``.
 Extra spec usage
 ----------------
 
-* ``infortrend:provisioning`` - Defaults to ``full`` provisioning, the valid values are thin, full.
+* ``infortrend:provisioning`` - Defaults to ``full`` provisioning, the valid values are thin and full.
 
 * ``infortrend:tiering`` - Defaults to use ``all`` tiering, the valid values are subsets of 0, 1, 2, 3.
 
-  If multi pools are configured in cinder.conf, it can be specified for each pool, separated by semicolon.
+  If multi-pools are configured in ``cinder.conf``, it can be specified for each pool, separated by semicolon.
 
   For example:
 
