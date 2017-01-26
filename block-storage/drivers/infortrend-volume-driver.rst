@@ -57,8 +57,8 @@ Set up cinder-volume node
 Driver configuration
 ~~~~~~~~~~~~~~~~~~~~
 
-On ``cinder-volume`` nodes, set the following in your ``/etc/cinder/cinder.conf``,
-and use the following options to configure it:
+On ``cinder-volume`` nodes, set the following in your
+``/etc/cinder/cinder.conf``, and use the following options to configure it:
 
 Driver options
 --------------
@@ -123,11 +123,14 @@ Multipath configuration
 Extra spec usage
 ----------------
 
-* ``infortrend:provisioning`` - Defaults to ``full`` provisioning, the valid values are thin and full.
+* ``infortrend:provisioning`` - Defaults to ``full`` provisioning,
+  the valid values are thin and full.
 
-* ``infortrend:tiering`` - Defaults to use ``all`` tiering, the valid values are subsets of 0, 1, 2, 3.
+* ``infortrend:tiering`` - Defaults to use ``all`` tiering,
+  the valid values are subsets of 0, 1, 2, 3.
 
-  If multi-pools are configured in ``cinder.conf``, it can be specified for each pool, separated by semicolon.
+  If multi-pools are configured in ``cinder.conf``,
+  it can be specified for each pool, separated by semicolon.
 
   For example:
 
