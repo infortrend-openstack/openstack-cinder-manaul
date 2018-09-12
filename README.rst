@@ -26,7 +26,9 @@ The Infortrend volume driver supports the following volume operations:
 
 * Retype a volume.
 
-* Manage and unmanage a volume.
+* List, manage and unmanage a volume.
+
+* List, manage and unmanage a snapshot.
 
 * Migrate a volume with back-end assistance.
 
@@ -71,27 +73,26 @@ Driver options
      - Description
    * - **[DEFAULT]**
      -
-   * - ``infortrend_pools_name`` = ``None``
-     - (String) The Infortrend logical volumes name.
-   * - ``san_ip`` = ``None``
-     - (String) The Infortrend storage ip for management.
-   * - ``infortrend_slots_a_channels_id`` = ``None``
-     - (String) The channels on slot A used by Cinder.
-   * - ``infortrend_slots_b_channels_id`` = ``None``
-     - (String) The channels on slot B used by Cinder.
    * - ``infortrend_cli_max_retries`` = ``5``
-     - (Integer) The retry times if a command fails.
-   * - ``infortrend_cli_timeout`` = ``30``
-     - (Integer) The timeout for migration jobs in minute.
-   * - ``infortrend_cli_cache`` = ``False``
-     - (Boolean) The Infortrend CLI cache. Make sure the array is only managed by Openstack and it's only used by one cinder-volume node.
-       Otherwise, never enable it! The data might be asynchronous if there're any other operations.
-   * - ``infortrend_iqn_prefix`` = ``iqn.2002-10.com.infortrend``
-     - (String) Infortrend default iqn prefix for iSCSI.
+     - (Integer) The maximum retry times if a command fails.
    * - ``infortrend_cli_path`` = ``/opt/bin/Infortrend/raidcmd_ESDS10.jar``
      - (String) The Infortrend CLI absolute path.
+   * - ``infortrend_cli_timeout`` = ``60``
+     - (Integer) The timeout for CLI in seconds.
+   * - ``infortrend_cli_cache`` = ``False``
+     - (Boolean) The Infortrend CLI cache. Make sure the array is only managed by Openstack, and it is only used by one cinder-volume node. Otherwise, never enable it! The data might be asynchronous if there were any other operations.
+   * - ``infortrend_pools_name`` = ``None``
+     - (String) The Infortrend logical volumes name list. It is separated with comma.
+   * - ``infortrend_iqn_prefix`` = ``iqn.2002-10.com.infortrend``
+     - (String) Infortrend iqn prefix for iSCSI.
+   * - ``infortrend_slots_a_channels_id`` = ``None``
+     - (String) Infortrend raid channel ID list on Slot A for OpenStack usage. It is separated with comma.
+   * - ``infortrend_slots_b_channels_id`` = ``None``
+     - (String) Infortrend raid channel ID list on Slot A for OpenStack usage. It is separated with comma.
    * - ``java_path`` = ``/usr/bin/java``
      - (String) The Java absolute path.
+   * - ``san_ip`` = ``None``
+     - (String) The Infortrend storage ip for management.
    * - ``san_password`` = ``None``
      - (String) The Infortrend array password.
 
@@ -111,6 +112,7 @@ iSCSI configuration example
    san_ip = MANAGEMENT_PORT_IP
    infortrend_slots_a_channels_id = 0,1,2,3
    infortrend_slots_b_channels_id = 0,1,2,3
+   san_password = RAID_PASSWORD
 
 Fibre Channel configuration example
 -----------------------------------
@@ -127,6 +129,7 @@ Fibre Channel configuration example
    infortrend_pools_name = POOL-1,POOL-2,POOL-3
    san_ip = MANAGEMENT_PORT_IP
    infortrend_slots_a_channels_id = 4,5
+   san_password = RAID_PASSWORD
 
 Multipath configuration
 -----------------------

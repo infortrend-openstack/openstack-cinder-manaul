@@ -26,7 +26,9 @@ The Infortrend volume driver supports the following volume operations:
 
 * Retype a volume.
 
-* Manage and unmanage a volume.
+* List, manage and unmanage a volume.
+
+* List, manage and unmanage a snapshot.
 
 * Migrate a volume with back-end assistance.
 
